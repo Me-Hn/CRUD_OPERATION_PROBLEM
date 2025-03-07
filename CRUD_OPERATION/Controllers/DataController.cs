@@ -15,12 +15,14 @@ namespace CRUD_OPERATION.Controllers
             _context = context;
             _env = env;
         }
+
+        //comit
         public async Task<IActionResult> Index()
         {
             var students = await _context.students.ToListAsync();
 
             // Check if data exists
-            if (students == null || students.Count == 0)
+            if (students == null || students.Count == 0) 
             {
                 return View("Error"); // If no data, redirect to an error page
             }

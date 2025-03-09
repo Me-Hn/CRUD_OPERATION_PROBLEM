@@ -22,12 +22,14 @@ namespace CRUD_OPERATION.Controllers
             var students = await _context.students.ToListAsync();
 
             // Check if data exists
-            if (students == null || students.Count == 0) 
-            {
-                return View("Error"); // If no data, redirect to an error page
-            }
+            //if (students == null || students.Count == 0) 
+            //{
+            //    return View("Error"); // If no data, redirect to an error page
+            //}
 
-            ViewData["result"] = students; // Store in ViewData
+            //ViewData["result"] = students; // Store in ViewData
+
+            ViewBag.rslt = students;
             return View(students);
         }
 

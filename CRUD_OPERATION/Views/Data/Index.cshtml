@@ -20,7 +20,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
-
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Password)
@@ -38,7 +37,8 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                    <img src=" @Html.DisplayFor(modelItem => item.Image)" alt="Alternate Text" height="150px" width="150px"
+                    />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Password)

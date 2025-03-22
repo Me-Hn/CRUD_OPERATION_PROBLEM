@@ -19,5 +19,8 @@ namespace CRUD_OPERATION.Models
                 .WithMany(c => c.products)
                 .HasForeignKey(p => p.CategoryId);
         }
+
+        public DbSet<Employee> employees { get; set; }
+
     }
 }

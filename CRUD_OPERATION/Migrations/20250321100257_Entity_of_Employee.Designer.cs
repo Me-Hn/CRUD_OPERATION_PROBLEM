@@ -3,6 +3,7 @@ using CRUD_OPERATION.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUD_OPERATION.Migrations
 {
     [DbContext(typeof(CRUD_OPERATION.Models.AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20250321100257_Entity_of_Employee")]
+    partial class Entity_of_Employee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

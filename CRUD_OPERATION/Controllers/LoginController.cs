@@ -42,20 +42,49 @@ namespace CRUD_OPERATION.Controllers
             return RedirectToAction("Profile");
         }
 
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> Profile()
         {
-           var _data = HttpContext.Session.GetInt32("key");
+            var _data = HttpContext.Session.GetInt32("key");
+
+            if (_data == null)
+            {
+                return RedirectToAction("Create"); // Redirect to login if session is null
+            }
 
             var _dtt = _context.employees.Where(x => x.Id == _data).FirstOrDefault();
-            //ViewBag.n = _data;
-
-            //if (ViewBag.n == null)
-            //{
-            //    return RedirectToAction("Create");
-            //}
             return View(_dtt);
         }
 
+
+
+        //public async Task<IActionResult> Profile()
+        //{
+        //   var _data = HttpContext.Session.GetInt32("key");
+
+        //    var _dtt = _context.employees.Where(x => x.Id == _data).FirstOrDefault();
+        //    //ViewBag.n = _data;
+
+        //    //if (ViewBag.n == null)
+        //    //{
+        //    //    return RedirectToAction("Create");
+        //    //}
+        //    return View(_dtt);
+        //}
+
+        //public async Task<IActionResult> Logout()
+        //{
+        //    HttpContext.Session.Clear(); // Clear session
+        //    HttpContext.Response.Cookies.Delete(".AspNetCore.Session"); // Delete session cookie
+
+        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+        //    Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+        //    Response.Headers["Pragma"] = "no-cache";
+        //    Response.Headers["Expires"] = "0";
+
+        //    return RedirectToAction("Create");
+        //}
         public async Task<IActionResult> Logout()
         {
             // Clear the session data
@@ -72,6 +101,7 @@ namespace CRUD_OPERATION.Controllers
             // Redirect to the Login page
             return RedirectToAction("Create");
         }
+
 
     }
 }

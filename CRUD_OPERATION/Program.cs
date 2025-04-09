@@ -53,11 +53,19 @@ namespace CRUD_OPERATION
             //for logout
             app.Use(async (context, next) =>
             {
-                context.Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate"; // HTTP 1.1.
-                context.Response.Headers["Pragma"] = "no-cache"; // For HTTP 1.0.
-                context.Response.Headers["Expires"] = "0"; // Expire immediately
+                context.Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "-1";
                 await next();
             });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    context.Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate"; // HTTP 1.1.
+            //    context.Response.Headers["Pragma"] = "no-cache"; // For HTTP 1.0.
+            //    context.Response.Headers["Expires"] = "0"; // Expire immediately
+            //    await next();
+            //});
 
             //for logout
             app.UseRouting();

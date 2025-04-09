@@ -60,7 +60,7 @@ namespace CRUD_OPERATION.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             
-            return View(category);
+            //return View(category);
         }
 
         // GET: Categories/Edit/5
